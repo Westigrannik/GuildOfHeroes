@@ -1,14 +1,16 @@
-public class Hero
-{
+public class Game {
     public string Name;
-    public int Health;
-    public int Level;
-    public int Experience;
+    public string Category;
+    public int Year;
+    public double Rating;
 
-    public Hero(string name, int health) {
+
+
+    public Hero(string name, string category, int year) {
         Name = name;
-        Health = health;
-        Level = 1;
-        Experience = 0;
+        Category = category;
+        Year = year;
+        Rating = 1.0;
     }
+    
 }
