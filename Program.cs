@@ -12,3 +12,7 @@ Console.WriteLine();
 Console.WriteLine(alexander.GetInfo());
 
 
+yaroslav.GainExperience(40);
+yaroslav.GainExperience(-10);
+yaroslav.GainExperience(2147483647);
+Console.WriteLine($"После проверок опыта: {yaroslav.Experience}");
