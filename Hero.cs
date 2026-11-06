@@ -36,4 +36,15 @@ public class Hero
         }
     Experience += amount;
     }
+
+    public bool IsAlive() {
+    return Health > 0; // Если хп больше 0, то оно говорит true (герой жив), либо false, если мёртв. В отличии от takedamage тут пишется да или нет
+    }
+
+    public string GetInfo() {
+    return $">>> {Name} <<<\n" +
+           $"Здоровье: {Health}\n" +
+           $"Уровень: {Level}\n" +
+           $"Опыт: {Experience}";
+    }
 }
