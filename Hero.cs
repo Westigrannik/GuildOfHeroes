@@ -60,17 +60,21 @@ public class Hero
         return;
     }
     Health += amount;
-}
-
-   public void GainExperience(int amount) {
-    if (amount <= 0) {
-        return;
     }
-    if (amount > 2147483647 - Experience) {
+
+   public bool CanGainExperience(int amount) {
+    if (amount <= 0) {
+        return false;
+    }
+    return amount <= int.MaxValue - Experience;
+    }
+
+    public void GainExperience(int amount) {
+    if (!CanGainExperience(amount)) {
         return;
     }
     Experience += amount;
-}
+    }
 
     public bool IsAlive() {
     return Health > 0; // Если хп больше 0, то оно говорит true (герой жив), либо false, если мёртв. В отличии от takedamage тут пишется да или нет
