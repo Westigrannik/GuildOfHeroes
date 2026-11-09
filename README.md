@@ -165,3 +165,53 @@ public string GetInfo() {
 
 ### Личный проект
 В папке личного проекта
+
+## Практическая работа №7
+
+1. Почему два признака bool хуже одного перечисления?
+    - Таким образом легче и лучше, ведь потом нужно будет больше и больше признаков bool
+2. Какие состояния поручения конечные и почему?
+    - 
+3. Куда делась проверка AssignedHero != null в Quest.TryAssign?
+    - 
+4. Где хранится занятость героя?
+    - Занятость хранится в Quest.cs
+5. Почему проверку занятости нельзя делать после назначения?
+    - 
+6. Почему доска не даёт удалить Сергея?
+    - 
+
+Трассировка: прогноз ..., факт ..., состояния после каждого шага ... .
+Ошибка 1: Состояние не проверяется, из-за чего он постоянно остаётся занятым . Ошибка 2: Опять ошибка типа: изменение до проверки .
+Самостоятельный шаг: CountByStatus 
+~~~csharp
+public int CountByStatus(QuestStatus status) {
+    int cc = 0;
+        foreach (Quest quest in _quests) {
+            if (quest.Status == status) { cc++; }
+        }
+        return cc;
+}
+~~~
+FindActiveQuest 
+~~~csharp
+public Quest? FindActiveQuest(string heroName) {
+        Hero? hero = _guild.FindHeroByName(heroName);
+        if (hero == null) {
+            return null;
+        }
+        foreach (Quest quest in _quests) {
+            if (quest.Status == QuestStatus.Assigned && quest.AssignedHero == hero) {
+                return quest;
+            }
+        }
+        return null;
+    }
+~~~
+IsAssigned в одну строку
+~~~csharp
+foreach (Quest quest in _quests) { if (quest.Status == QuestStatus.Assigned && quest.AssignedHero == hero) { return true; } }
+~~~
+
+### Личный проект
+В папке личного проекта
